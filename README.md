@@ -8,7 +8,7 @@ CURRENTLY FINISHED:
   + All base game material textures located and imported.
   + 12 patterns cleaned up.
   + ~~Simple switching between current list of masks, materials and patterns by key presses.~~
-        ++ functions that take an int for the array address have replaced these.
+  +      Functions that take an int for the array address have replaced the above.
   + Added partialy functioning UI with the ability to switch between 2 masks at current functioning.
   
 
