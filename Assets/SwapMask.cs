@@ -8,7 +8,7 @@ public class SwapMask : MonoBehaviour {
 	public Texture [] textures;
 	public Texture2D[] patterns; 	//array storing all models and textures respectivley
 	public Color [] patternMain, patternSecond;
-	public GameObject mainMenu, maskMenu;//, patternMenu, materialeMenu, colourMenu;
+	public GameObject mainMenu, maskMenu, materialMenu;//, patternMenu, colourMenu;
 
 	private int modelNumber, textureNumber, patternNumber; 	//index for model, texture, and pattern respectivley
 	private GameObject tempMask, currentMask;	//internal model to swap arround
@@ -39,7 +39,8 @@ public class SwapMask : MonoBehaviour {
 	{
 		//close all other open menus
 		maskMenu.SetActive (false);
-			//others to go ehre soon
+		materialMenu.SetActive (false);
+			//others to go here soon
 		//pull up base menu
 		mainMenu.SetActive (true);
 		currentMask.SetActive(true) ; //show mask
@@ -55,12 +56,10 @@ public class SwapMask : MonoBehaviour {
 
 	public void showTextureMenu()
 	{
-		currentMask.GetComponentInChildren<MeshRenderer>().material.mainTexture = textures[textureNumber];
-		//below here is to be removed later, only for testing
-		//texture number will later be set by drop-down list selection
-		textureNumber++;
-		textureNumber = textureNumber % textures.Length;
 
+		currentMask.SetActive(false) ; //hide mask while menu is up
+		mainMenu.SetActive (false);//hide base menu
+		materialMenu.SetActive (true);//pull up menu of all masks to pick from either as names, or images with name underneath
 	}
 	
 	public void showPatternMenu()
@@ -89,45 +88,34 @@ public class SwapMask : MonoBehaviour {
 	
 	public void modelSwap(int n)
 	{
+		mainView();
+
 		modelNumber=n;
 		tempMask = (GameObject) Instantiate(masks[modelNumber], transform.position, transform.rotation);
 		Destroy(currentMask);
 		tempMask.transform.parent = transform;
 		currentMask = tempMask;
-		
-		mainView();
 	}
 	
 	public void textureSwap(int n)
 	{
-		if (n == -1) 
-		{
-			cleanMask();
-		} 
-		else 
-		{
+		mainView();
+
 			textureNumber = n;
-			currentMask.GetComponentInChildren<MeshRenderer> ().material.mainTexture = textures [textureNumber];
-		}
-		//below here is to be removed later, only for testing
-		//texture number will later be set by drop-down list selection
-		//	textureNumber++;
-		//	textureNumber = textureNumber % textures.Length;
-		
+			currentMask.GetComponentInChildren<MeshRenderer> ().material.mainTexture = textures[textureNumber];
+
 	}
 	
 	public void patternSwap(int n)
 	{
+		mainView();
+
 		patternNumber = n;
-		if (patternNumber ==-1) {
-			currentMask.GetComponentInChildren<MeshRenderer> ().material.DisableKeyword ("_DETAIL_MULX2");
-			patternNumber = 0;
-		} else {
+
 			currentMask.GetComponentInChildren<MeshRenderer> ().material.SetTexture ("_DetailMask", patterns [patternNumber]);
 			currentMask.GetComponentInChildren<MeshRenderer> ().material.SetTexture ("_DetailAlbedoMap", patterns [patternNumber]);
 			currentMask.GetComponentInChildren<MeshRenderer> ().material.EnableKeyword ("_DETAIL_MULX2");
 			patternNumber++;
-		}
 		
 	}
 
