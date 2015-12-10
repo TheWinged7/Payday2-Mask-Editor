@@ -124,13 +124,19 @@ public class SwapMask : MonoBehaviour {
 	
 	public void modelSwap(int n)
 	{
-		mainView();
+		mainView(); //set to the main view and close all menus
 		
-		modelNumber=n;
-		tempMask = (GameObject) Instantiate(masks[modelNumber], transform.position, transform.rotation);
-		Destroy(currentMask);
-		tempMask.transform.parent = transform;
-		currentMask = tempMask;
+		modelNumber=n;		//set the model number to the one sent to the function
+		tempMask = (GameObject) Instantiate(masks[modelNumber], transform.position, transform.rotation); //instantiate temporary object with new model
+		Destroy(currentMask);		//destroy current model
+
+		//tempMask.transform.parent = transform;	
+
+		tempMask.transform.localScale = new Vector3(1,1,1); //not working, should scale model up to full sized in stead of 0.03 of size
+
+		currentMask = tempMask;	//set temp mask as the current mask
+
+		Destroy(tempMask);		//destroy temp mask now that we are done with it
 	}
 	
 	public void textureSwap(int n)
@@ -176,6 +182,28 @@ public class SwapMask : MonoBehaviour {
 			}
 		}
 	
+	}
+
+	public void previousMaterialPage()
+	{
+		materialPageNumber--;
+		if (materialPageNumber <0) 
+		{
+			materialPageNumber= materialPages.Length-1;
+		}
+		
+		foreach (GameObject page in materialPages) //itterate through all menu pages
+		{
+			if (page== materialPages[materialPageNumber])	//if it matches the current selected:
+			{
+				page.SetActive (true);	//set panel to visible
+			}
+			else 											//if it does not match
+			{
+				page.SetActive (false); //set panel to invisible
+			}
+		}
+		
 	}
 
 }
