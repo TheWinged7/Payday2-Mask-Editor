@@ -20,4 +20,4 @@ desktop: 1680x1050 60Hz; virtual: 3120x1050 at -1440,0
 Platform assembly: C:\Users\Nick\Documents\Payday2_Mask_Viewer\Payday2MaskViewer_B001_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Nick\Documents\Payday2_Mask_Viewer\Payday2MaskViewer_B001_Data\Managed\System.dll (this message is harmless)
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 1ea0 -> priority: 1 
+  Thread -> id: 1724 -> priority: 1 
