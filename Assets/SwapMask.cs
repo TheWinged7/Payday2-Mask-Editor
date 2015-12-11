@@ -27,6 +27,7 @@ public class SwapMask : MonoBehaviour {
 		patternPageNumber = 0; //set pattern page number to first page
 		currentMask= (GameObject)  Object.Instantiate (masks[modelNumber], transform.position, transform.rotation); //load default mask
 		currentMask.transform.parent = transform;	//set mask to match parent location and rotation
+		currentMask.transform.localScale = new Vector3(1,1,1);
 		currentMask.SetActive (true);				//set mask to visible
 		
 		mainMenu.SetActive (true);
@@ -119,6 +120,7 @@ public class SwapMask : MonoBehaviour {
 		tempMask = (GameObject) Instantiate(masks[modelNumber], transform.position, transform.rotation);
 		Destroy(currentMask);
 		tempMask.transform.parent = transform;
+		tempMask.transform.localScale = new Vector3(1,1,1);
 		currentMask = tempMask;
 	}
 	
@@ -130,13 +132,14 @@ public class SwapMask : MonoBehaviour {
 		tempMask = (GameObject) Instantiate(masks[modelNumber], transform.position, transform.rotation); //instantiate temporary object with new model
 		Destroy(currentMask);		//destroy current model
 
-		//tempMask.transform.parent = transform;	
+		tempMask.transform.parent = transform;	
+		tempMask.transform.localScale = new Vector3(1,1,1);
 
-		tempMask.transform.localScale = new Vector3(1,1,1); //not working, should scale model up to full sized in stead of 0.03 of size
+		 //not working, should scale model up to full sized in stead of 0.03 of size
 
 		currentMask = tempMask;	//set temp mask as the current mask
 
-		Destroy(tempMask);		//destroy temp mask now that we are done with it
+
 	}
 	
 	public void textureSwap(int n)
