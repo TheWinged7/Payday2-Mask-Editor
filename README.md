@@ -1,8 +1,11 @@
 # Payday2-Mask-Editor
-An attempt to create a program in unity to preview payday 2 masks customisations, including material, patten and colours.
+## At current this project has been dropped for time/technical knowledge reasons. ##
+I am no 3D modeler, and struggled UV mapping the 3 masks I managed to do. The rest of the project is fairly simple, but with the number of masks, patterns, colours, and materials being released almost monthly, i have no chance of keeping up.
+
+## An attempt to create a program in unity to preview payday 2 masks customisations, including material, patten and colours. ##
 
 at current, very little is done while i learn c# and making programs in unity.
-CURRENTLY FINISHED:
+# CURRENTLY FINISHED: #
   + 3 masks UV mapped and imported.
   + All base game masks found and exported, but not converted.
   + All base game material textures located and imported.
@@ -12,7 +15,7 @@ CURRENTLY FINISHED:
   + Added partialy functioning UI with the ability to switch between 2 masks at current functioning.
   
 
-TO DO: 
+# TO DO: #
   - locate all "materials" textures from the game files.
   - locate all "patterns" textures from the game files.
   - collect all colour combinations from the game.
